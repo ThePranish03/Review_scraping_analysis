@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+body {
+    height:100vh; display:flex; justify-content:center; align-items:center;
+    background:linear-gradient(135deg,#a1c4fd,#c2e9fb,#d4fc79,#96e6a1);
+    background-size:300% 300%; animation:gradientBG 8s ease infinite;
+}
+@keyframes gradientBG { 0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+.register-container {
+    background:#ffffffcc; padding:45px 35px; border-radius:20px; box-shadow:0 12px 35px rgba(0,0,0,0.15);
+    width:400px; text-align:center; backdrop-filter:blur(10px); animation:fadeIn 1s ease-in-out;
+}
+.register-container h2 { margin-bottom:25px; color:#333; font-size:28px; font-weight:700; letter-spacing:1px; }
+.input-group { margin-bottom:18px; text-align:left; }
+.input-group label { display:block; margin-bottom:6px; font-size:14px; color:#444; font-weight:500; }
+.input-group input {
+    width:100%; padding:12px; border:1px solid #ddd; border-radius:12px; font-size:15px; transition:all 0.3s; background:#f9f9ff;
+}
+.input-group input:focus { border-color:#8e54e9; box-shadow:0 0 10px rgba(142,84,233,0.4); outline:none; background:#fff; }
+.btn {
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#8e54e9,#4776e6); background-size:300% 300%;
+    color:#fff; border:none; padding:14px; width:100%; font-size:16px; font-weight:bold; border-radius:12px; cursor:pointer; transition:all 0.4s;
+}
+.btn:hover { background-position:100% 0; box-shadow:0 6px 20px rgba(142,84,233,0.5); transform:translateY(-2px); }
+.login-text { margin-top:18px; font-size:14px; color:#444; }
+.login-text a { color:#8e54e9; text-decoration:none; font-weight:600; }
+.login-text a:hover { text-decoration:underline; }
+#msg { margin-top:12px; font-size:14px; color:red; }
+@keyframes fadeIn { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
+</style>
+</head>
+<body>
+<div class="register-container">
+    <h2>📝 Create Account</h2>
+    <form method="POST" autocomplete="off">
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Choose a username" required>
+        </div>
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create a password" required>
+        </div>
+        <div class="input-group">
+            <label>Confirm Password</label>
+            <input type="password" name="confirmPassword" placeholder="Re-enter your password" required>
+        </div>
+        <button type="submit" class="btn">Register</button>
+        {% if msg %}<p id="msg">{{ msg }}</p>{% endif %}
+    </form>
+    <p class="login-text">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+</div>
+</body>
+</html>
