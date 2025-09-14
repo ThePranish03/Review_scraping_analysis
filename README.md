@@ -36,7 +36,5 @@ Data scraping and sentimental analysis on product reviews to judge the quality o
 - **Frontend**: HTML, TailwindCSS, Jinja
 - **Database**: SQLite / MySQL
 
----
 
-## 📂 Project Structure
 
