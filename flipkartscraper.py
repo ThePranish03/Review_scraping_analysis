@@ -28,6 +28,9 @@ def scrape_reviews(search_query):
 
         page.wait_for_load_state("networkidle", timeout=60000)
 
+        #image extraction
+        image_src = page.locator("img[loading='eager']").first.get_attribute("src")
+        print("Image URL:", image_src)
         # Click first product
         first_product = page.locator("a.CGtC98, div.KzDlHZ").first
         if first_product.count() == 0:
@@ -35,12 +38,15 @@ def scrape_reviews(search_query):
             return [], "Product not found"
 
         product_name = first_product.inner_text()
-        lines = product_name.split("\n")
+        # lines = product_name.split("\n")
 
-        if len(lines) > 1:
-            product_name = lines[1].strip()   # take only the second line
-        else:
-            product_name = lines[0].strip()   # fallback if only one line
+        # # for l in lines:
+        # #     product_name = lines[l]
+
+        # if len(lines) > 1:
+        #     product_name = lines[1].strip()   # take only the second line
+        # else:
+        #     product_name = lines[0].strip()   # fallback if only one line
 
         print("Product Name:", product_name)
         first_product.click()
@@ -59,7 +65,7 @@ def scrape_reviews(search_query):
             if not review_blocks:
                 break
 
-            if serial_no > 15:
+            if serial_no > 5:
                 break
 
             for block in review_blocks:
@@ -73,8 +79,8 @@ def scrape_reviews(search_query):
                 review_text = review_text.replace("\n", " ").strip()
 
                 if rating or review_text:
-                    reviews[serial_no] = {"rating": rating, "review": review_text}
                     serial_no += 1
+                    reviews[serial_no] = {"rating": rating, "review": review_text}
                     print("Serial_no:",serial_no)
 
             # Next page
@@ -89,7 +95,7 @@ def scrape_reviews(search_query):
 
     
 
-    return reviews, product_name
+    return reviews, product_name, image_src
 
 
 # if __name__ == "__main__":

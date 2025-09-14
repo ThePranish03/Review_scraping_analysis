@@ -1,55 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
-body {
-    height:100vh; display:flex; justify-content:center; align-items:center;
-    background:linear-gradient(135deg,#a1c4fd,#c2e9fb,#d4fc79,#96e6a1);
-    background-size:300% 300%; animation:gradientBG 8s ease infinite;
-}
-@keyframes gradientBG { 0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
-.login-container {
-    background:#ffffffcc; padding:45px 35px; border-radius:20px; box-shadow:0 12px 35px rgba(0,0,0,0.15);
-    width:400px; text-align:center; backdrop-filter:blur(10px); animation:fadeIn 1s ease-in-out;
-}
-.login-container h2 { margin-bottom:25px; color:#333; font-size:28px; font-weight:700; letter-spacing:1px; }
-.input-group { margin-bottom:18px; text-align:left; }
-.input-group label { display:block; margin-bottom:6px; font-size:14px; color:#444; font-weight:500; }
-.input-group input {
-    width:100%; padding:12px; border:1px solid #ddd; border-radius:12px; font-size:15px; transition:all 0.3s; background:#f9f9ff;
-}
-.input-group input:focus { border-color:#8e54e9; box-shadow:0 0 10px rgba(142,84,233,0.4); outline:none; background:#fff; }
-.btn {
-    background:linear-gradient(135deg,#ff758c,#ff7eb3,#8e54e9,#4776e6); background-size:300% 300%;
-    color:#fff; border:none; padding:14px; width:100%; font-size:16px; font-weight:bold; border-radius:12px; cursor:pointer; transition:all 0.4s;
-}
-.btn:hover { background-position:100% 0; box-shadow:0 6px 20px rgba(142,84,233,0.5); transform:translateY(-2px); }
-.register-text { margin-top:18px; font-size:14px; color:#444; }
-.register-text a { color:#8e54e9; text-decoration:none; font-weight:600; }
-.register-text a:hover { text-decoration:underline; }
-#msg { margin-top:12px; font-size:14px; color:red; }
-@keyframes fadeIn { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpinionSense - Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Left branding section */
+    .left {
+      flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  color: #fff;
+  text-align: center;
+  background: rgba(24, 40, 72, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+    }
+
+    .left h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .left p {
+      font-size: 16px;
+      max-width: 400px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* Right form section */
+    .right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 20px;
+      padding: 40px;
+      width: 380px;
+      text-align: center;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 2px solid rgba(0, 114, 255, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      font-size: 30px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Input fields */
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid rgba(0, 114, 255, 0.3);
+      border-radius: 12px;
+      font-size: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #e0e6f6;
+      transition: all 0.3s ease;
+    }
+
+    .login-box input:focus {
+      border-color: #00c6ff;
+      box-shadow: 0 0 12px #00c6ff;
+      outline: none;
+      transform: scale(1.02);
+    }
+
+    /* Button */
+    .login-box button {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      background-size: 300% 300%;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+      animation: gradientFlow 6s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .login-box button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 198, 255, 0.9);
+    }
+
+    /* Bottom text */
+    .login-box p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #e0e6f6;
+    }
+
+    .login-box p a {
+      color: #00c6ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-box p a:hover {
+      text-decoration: underline;
+      color: #0072ff;
+    }
+
+    /* Fade-in effect */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-<div class="login-container">
-    <h2>🔐 Login</h2>
-    <form method="POST" autocomplete="off">
-        <div class="input-group">
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Enter your username" required>
-        </div>
-        <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="btn">Login</button>
-        {% if msg %}<p id="msg">{{ msg }}</p>{% endif %}
-    </form>
-    <p class="register-text">Don’t have an account? <a href="{{ url_for('register') }}">Register</a></p>
-</div>
+
+  <div class="container">
+    <!-- Left branding -->
+    <div class="left">
+      <h1>OpinionSense</h1>
+      <p>
+        Analyze customer reviews with the power of AI-driven sentiment analysis.  
+        Gain valuable insights and make smarter decisions with data-backed opinions.  
+        Join us today and explore product feedback like never before.
+      </p>
+    </div>
+
+    <!-- Right login form -->
+    <div class="right">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form method="POST">
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </form>
+        {% if msg %}
+          <p style="color:red;">{{ msg }}</p>
+        {% endif %}
+        <p>Don't have an account? <a href="/register">Register here</a></p>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

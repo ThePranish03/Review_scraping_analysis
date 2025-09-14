@@ -35,6 +35,10 @@ for t in cursor:
     print(t)
 
 
+@app.route("/")
+def home():
+    return render_template("home.html")
+
 # Register route
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -105,17 +109,29 @@ def dashboard(username="guest"):
         search_query = request.args.get("search_query", "").strip()
 
     reviews_to_display = []
+    product_name = ""
+    image_src = ""
 
     if search_query:
         try:
             # Run scraper and get data
-            reviews_dict, product_name = scrape_reviews(search_query)
+            reviews_dict, product_name, image_src = scrape_reviews(search_query)
+
+            # Ensure product_name and image_src are strings
+            if isinstance(product_name, tuple):
+                product_name = product_name[0]
+            else:
+                product_name = str(product_name)
+
+            if isinstance(image_src, tuple):
+                image_src = image_src[0]
+            else:
+                image_src = str(image_src)
 
             # Convert dict to list of dicts (so Jinja can loop easily)
             for serial_no, rev in reviews_dict.items():
                 reviews_to_display.append({
                     "serial_no": serial_no,
-                    "product_name": product_name,
                     "review": rev['review'],
                     "rating": rev['rating']
                 })
@@ -127,10 +143,10 @@ def dashboard(username="guest"):
         "dashboard.html",
         username=username,
         reviews=reviews_to_display,
-        search_query=search_query
+        search_query=search_query,
+        product_name=product_name,
+        image_src=image_src
     )
-
-
 
 
 # Default route

@@ -2,62 +2,224 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Register</title>
+<title>Register - OpinionSense</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
-    height:100vh; display:flex; justify-content:center; align-items:center;
-    background:linear-gradient(135deg,#a1c4fd,#c2e9fb,#d4fc79,#96e6a1);
-    background-size:300% 300%; animation:gradientBG 8s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4b6cb7, #182848, #2c3e50, #283e51);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
 }
-@keyframes gradientBG { 0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Split layout */
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Left branding section */
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  color: #fff;
+  text-align: center;
+  background: rgba(24, 40, 72, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.left-panel h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.left-panel p {
+  font-size: 16px;
+  max-width: 400px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Right form section */
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .register-container {
-    background:#ffffffcc; padding:45px 35px; border-radius:20px; box-shadow:0 12px 35px rgba(0,0,0,0.15);
-    width:400px; text-align:center; backdrop-filter:blur(10px); animation:fadeIn 1s ease-in-out;
+  background: rgba(25, 35, 55, 0.55);
+  border-radius: 20px;
+  padding: 40px;
+  width: 400px;
+  text-align: center;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 2px solid rgba(0, 114, 255, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1s ease-in-out;
 }
-.register-container h2 { margin-bottom:25px; color:#333; font-size:28px; font-weight:700; letter-spacing:1px; }
-.input-group { margin-bottom:18px; text-align:left; }
-.input-group label { display:block; margin-bottom:6px; font-size:14px; color:#444; font-weight:500; }
+
+.register-container h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Input fields */
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e0e6f6;
+}
+
 .input-group input {
-    width:100%; padding:12px; border:1px solid #ddd; border-radius:12px; font-size:15px; transition:all 0.3s; background:#f9f9ff;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid rgba(0, 114, 255, 0.3);
+  border-radius: 12px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0e6f6;
+  transition: all 0.3s ease;
 }
-.input-group input:focus { border-color:#8e54e9; box-shadow:0 0 10px rgba(142,84,233,0.4); outline:none; background:#fff; }
+
+.input-group input:focus {
+  border-color: #00c6ff;
+  box-shadow: 0 0 12px #00c6ff;
+  outline: none;
+  transform: scale(1.02);
+}
+
+/* Button */
 .btn {
-    background:linear-gradient(135deg,#ff758c,#ff7eb3,#8e54e9,#4776e6); background-size:300% 300%;
-    color:#fff; border:none; padding:14px; width:100%; font-size:16px; font-weight:bold; border-radius:12px; cursor:pointer; transition:all 0.4s;
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  background-size: 300% 300%;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+  animation: gradientFlow 6s ease infinite;
 }
-.btn:hover { background-position:100% 0; box-shadow:0 6px 20px rgba(142,84,233,0.5); transform:translateY(-2px); }
-.login-text { margin-top:18px; font-size:14px; color:#444; }
-.login-text a { color:#8e54e9; text-decoration:none; font-weight:600; }
-.login-text a:hover { text-decoration:underline; }
-#msg { margin-top:12px; font-size:14px; color:red; }
-@keyframes fadeIn { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 198, 255, 0.9);
+}
+
+/* Login link */
+.login-text {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #e0e6f6;
+}
+
+.login-text a {
+  color: #00c6ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+  color: #0072ff;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
-<div class="register-container">
-    <h2>📝 Create Account</h2>
-    <form method="POST" autocomplete="off">
-        <div class="input-group">
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Choose a username" required>
-        </div>
-        <div class="input-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Enter your email" required>
-        </div>
-        <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Create a password" required>
-        </div>
-        <div class="input-group">
-            <label>Confirm Password</label>
-            <input type="password" name="confirmPassword" placeholder="Re-enter your password" required>
-        </div>
-        <button type="submit" class="btn">Register</button>
-        {% if msg %}<p id="msg">{{ msg }}</p>{% endif %}
-    </form>
-    <p class="login-text">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+<div class="container">
+  <!-- Branding / Site Details -->
+  <div class="left-panel">
+    <h1>OpinionSense</h1>
+    <p>
+      OpinionSense helps analyze customer reviews using AI sentiment analysis.  
+      Our mission is to empower users with insights from product feedback.  
+      Join now to explore smarter decision-making with data-driven opinions.
+    </p>
+  </div>
+
+  <!-- Register Form -->
+  <div class="right-panel">
+    <div class="register-container">
+      <h2>📝 Create Account</h2>
+      <form method="POST" autocomplete="off">
+          <div class="input-group">
+              <label>Username</label>
+              <input type="text" name="username" placeholder="Choose a username" required>
+          </div>
+          <div class="input-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-group">
+              <label>Password</label>
+              <input type="password" name="password" placeholder="Create a password" required>
+          </div>
+          <div class="input-group">
+              <label>Confirm Password</label>
+              <input type="password" name="confirmPassword" placeholder="Re-enter your password" required>
+          </div>
+          <button type="submit" class="btn">Register</button>
+          {% if msg %}<p id="msg">{{ msg }}</p>{% endif %}
+      </form>
+      <p class="login-text">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+  </div>
 </div>
 </body>
 </html>

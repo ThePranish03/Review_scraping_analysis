@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | OpinionSense</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+  background: #f9fafb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #f72585, #4361ee, #3a0ca3);
+  padding: 15px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, rgba(247, 37, 133, 0.15), rgba(67, 97, 238, 0.15), rgba(58, 12, 163, 0.15));
+}
+.hero h1 {
+  font-size: 2.5rem;
+  color: #3a0ca3;
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 20px auto;
+  color: #333;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-primary {
+  background: #f72585;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #e51279;
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid #4361ee;
+  color: #4361ee;
+}
+.btn-outline:hover {
+  background: #4361ee;
+  color: #fff;
+}
+
+/* About Section */
+.about {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+.about h2 {
+  color: #3a0ca3;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+/* Feature Cards */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.feature-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.feature-card i {
+  font-size: 2rem;
+  color: #f72585;
+  margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #3a0ca3, #4361ee);
+  color: #fff;
+  text-align: center;
+  padding: 30px 15px;
+  margin-top: 60px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo"><i class="fas fa-brain"></i> OpinionSense</div>
+    <nav>
+      <a href="{{ url_for('register') }}">Register</a>
+      <a href="{{ url_for('login') }}">Login</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>OpinionSense: Smarter Sentiment Analysis</h1>
+    <p>
+      OpinionSense is a project designed to improve sentiment analysis of product reviews using 
+      <b>Playwright and selenium</b> for intelligent data scraping and <b>Bidirectional LSTM</b> neural networks for 
+      highly accurate sentiment classification.
+    </p>
+    <div class="hero-buttons">
+      <div class="hero-buttons">
+        <a href="{{ url_for('login') }}"><button class="btn btn-primary">Login</button></a>
+        <a href="{{ url_for('register') }}"><button class="btn btn-outline">Register</button></a>
+    </div>
+    </div>
+  </section>
+
+  <!-- About Project -->
+  <section class="about">
+    <h2>About Our Project</h2>
+    <p>
+      In today’s digital era, millions of reviews are shared online daily. Manual analysis is inefficient, 
+      so OpinionSense automates review collection and sentiment detection. By combining 
+      <b>Playwright and selenium</b> for smart scraping with <b>BiLSTM</b> models, it delivers accurate classification 
+      of positive, negative, and neutral sentiments, enabling businesses to make informed decisions.
+    </p>
+
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-robot"></i>
+        <h3>AI-Powered</h3>
+        <p>Uses Bidirectional LSTM for context-aware sentiment predictions.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-database"></i>
+        <h3>Data Scraping</h3>
+        <p>Playwright and selenium enables real-time review collection from multiple sources.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Business Insights</h3>
+        <p>Helps businesses analyze customer feedback with >90% accuracy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 OpinionSense. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
